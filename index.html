@@ -6,7 +6,25 @@
     <link rel="stylesheet" href="https://unpkg.com/bamboo.css" />
     <script type="module" src="src/app.js"></script>
     <style>
-      pre { background:#111; color:#ddd; padding:.75rem; border-radius:8px; overflow:auto; }
+      pre {
+        background: #111;
+        color: #ddd;
+        padding: .75rem;
+        border-radius: 8px;
+        overflow: auto;
+      }
+
+      textarea {
+        width: 100%;
+        max-width: 40rem;
+      }
+
+      #md-html {
+        border: 1px solid #444;
+        padding: .75rem;
+        border-radius: 8px;
+        margin-top: .5rem;
+      }
     </style>
   </head>
   <body>
@@ -22,6 +40,7 @@
       <h2>Hello <span class="username"></span>!</h2>
 
       <div style="margin:.5rem 0 1rem">
+        <!-- existing demo buttons -->
         <button id="create">Create "hello from UI"</button>
         <button id="open">Open latest</button>
       </div>
@@ -31,6 +50,39 @@
 
       <h3>Latest fragment data</h3>
       <pre id="data"></pre>
+
+      <hr />
+
+      <h3>Create a new fragment</h3>
+
+      <label for="fragment-type"><strong>Type</strong></label>
+      <select id="fragment-type">
+        <option value="text/plain">text/plain</option>
+        <option value="text/markdown">text/markdown</option>
+        <option value="application/json">application/json</option>
+      </select>
+
+      <br /><br />
+
+      <label for="fragment-body"><strong>Content</strong></label><br />
+      <textarea id="fragment-body" rows="6"></textarea>
+
+      <br /><br />
+      <button id="create-fragment">Create fragment</button>
+
+      <p id="create-status"></p>
+
+      <hr />
+
+      <h3>Markdown conversion test</h3>
+      <p>
+        After creating a <code>text/markdown</code> fragment above, use this to
+        fetch the <code>.html</code> version from the API:
+      </p>
+      <button id="open-md-html">Open last Markdown as HTML</button>
+
+      <h4>Rendered Markdown (HTML)</h4>
+      <div id="md-html"></div>
     </section>
   </body>
 </html>
